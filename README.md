@@ -1,2 +1,2 @@
 # NoteApp
-Honestly started as a solution to my constant note taking
+Honestly began as a solution to my perpetual note-taking
