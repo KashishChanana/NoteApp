@@ -12,10 +12,3 @@ class Workflow():
 
         context = self.loader.load(input_io)
         return self.task.execute(model=self.model, context=context)
-        
-
-        
-
-
-
-

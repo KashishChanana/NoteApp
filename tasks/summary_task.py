@@ -27,3 +27,4 @@ class SummaryTask(BaseTask):
             return self.summary
         except Exception as e:
             raise RuntimeError(f"Error executing summary task: {e}")
+        

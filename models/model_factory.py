@@ -11,3 +11,4 @@ class ModelFactory:
         if model_class is None:
             raise ValueError(f"Model '{model_name}' not recognized")
         return model_class()
+    

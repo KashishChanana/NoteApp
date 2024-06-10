@@ -22,3 +22,4 @@ class BlogTask(BaseTask):
             self.blog += response.choices[0].message.content
 
         return self.blog
+    

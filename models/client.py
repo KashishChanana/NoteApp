@@ -7,3 +7,4 @@ class BaseClient():
     
     def generate(self, prompt:str, context:str):
         raise NotImplementedError("This method should be overridden.")
+    

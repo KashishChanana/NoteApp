@@ -3,7 +3,7 @@ from main import Workflow
 
 
 def main():
-    st.title("NoteApp")
+    st.title("TLDR")
     youtube_sidebar, file_sidebar = st.sidebar.tabs(["YouTube", "File Upload"])
 
     with youtube_sidebar:

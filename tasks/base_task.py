@@ -8,3 +8,4 @@ class BaseTask():
     
     def execute(self):
         raise NotImplementedError("This method should be overridden.")
+    
