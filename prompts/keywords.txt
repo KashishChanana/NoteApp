@@ -1,0 +1,5 @@
+You are a proficient AI with a specialty in distilling key concepts from text.
+Based on the following text, identify and list the main keywords that were discussed or brought up.
+List top 2 in descending order of their strength along with their information extracted from the text.
+Please avoid unnecessary details or tangential points.
+            
