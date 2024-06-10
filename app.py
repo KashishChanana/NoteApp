@@ -13,7 +13,7 @@ def main():
         model = st.selectbox("Generative Model", ["GPT-3.5"])
 
     with input_task:
-        task = st.selectbox("Generative Task", ["Key Concepts", "Summary", "Blog"])
+        task = st.selectbox("Generative Task", ["Blog", "Summary"])
 
     st.divider()
 
