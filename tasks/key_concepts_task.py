@@ -1,8 +1,8 @@
-from models.client import Client
+from models.client import BaseClient
 from tasks.base_task import BaseTask
 
 class KeyConceptsTask(BaseTask):
-    def execute(self, model:Client, context:str):
+    def execute(self, model:BaseClient, context:str):
         pass
     
     def get_dependent_task(self):

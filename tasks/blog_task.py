@@ -1,5 +1,5 @@
 from tasks.base_task import BaseTask
-from models.client import Client
+from models.client import BaseClient
 from tokenizer import recursive_char_splitter
 from langchain.docstore.document import Document
 from dataloaders.prompt_loader import _load_prompt
@@ -13,7 +13,7 @@ class BlogTask(BaseTask):
     def get_dependent_task(self):
         return SummaryTask()
 
-    def execute(self, model:Client, context:str):
+    def execute(self, model:BaseClient, context:str):
         summary = self.get_dependent_task().execute(model=model, context=context)
         doc =  Document(page_content=summary, metadata={"source": "local"})
         summary_splits = recursive_char_splitter.split_text([doc], chunk_overlap=0)

@@ -1,5 +1,5 @@
 from tasks.base_task import BaseTask
-from models.client import Client
+from models.client import BaseClient
 from tokenizer import recursive_char_splitter
 from dataloaders.prompt_loader import _load_prompt
 
@@ -8,7 +8,7 @@ class SummaryTask(BaseTask):
         self.summary = ""
         self.summary_prompt = _load_prompt(self.__class__.__name__)
 
-    def execute(self, model:Client, context:str):
+    def execute(self, model:BaseClient, context:str):
         """
         Generates a summary from the context using the model.
 

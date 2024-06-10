@@ -4,9 +4,8 @@ from main import Workflow
 
 def main():
     st.title("NoteApp")
-    # input_url, input_model, input_task = st.sidebar.columns(3)
-
     youtube_sidebar, file_sidebar = st.sidebar.tabs(["YouTube", "File Upload"])
+
     with youtube_sidebar:
         input_url = st.text_input("YouTube URL")
 
@@ -17,18 +16,24 @@ def main():
     task = st.sidebar.selectbox("Generative Task", ["Blog", "Summary"])
     generate_button = st.sidebar.button("Generate", type="secondary")
 
+    if input_url:
+        upload_type = "YouTubeURL" 
+        input_io = input_url
+    
+    if input_file:
+        upload_type = "FileUpload"
+        input_io = input_file
+
     if generate_button and (input_url or input_file):
-        st.video(input_url)
-        response = Workflow().run(youtube_url=input_url, model=model, task=task)
-        if response:
+
+        if input_url:
+            st.video(input_url)
             st.divider()
+
+        response = Workflow().run(input_io, model, task, upload_type)
+        if response:
             st.subheader(task)
             st.markdown(response)
 
 if __name__ == "__main__":
     main()
-
-
-
-
-

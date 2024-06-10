@@ -1,11 +1,11 @@
 import datetime
 import openai
 import os
-from models.client import Client
+from models.client import BaseClient
 
 openai.api_key = os.environ['OPENAI_API_KEY']
 
-class OpenAI(Client):
+class OpenAI(BaseClient):
 
     def __init__(self):
         self.llm_model = self.get_model()

@@ -1,7 +1,7 @@
-from langchain.document_loaders import YoutubeLoader
-from dataloaders.loader import Loader
+from langchain_community.document_loaders import YoutubeLoader
+from dataloaders.base_loader import BaseLoader
 
-class YouTubeLoader(Loader):
+class YouTubeLoader(BaseLoader):
 
     def load(self, youtube_url: str):
         try:
@@ -9,8 +9,5 @@ class YouTubeLoader(Loader):
         except Exception as e:
             raise RuntimeError("Unable to load youtube video from the given URL.")
         print(f"Loaded YouTube URL: {youtube_url}")
-        return loader
-    
-    def generate_transcript(self, youtube_url:str):
-        loader = self.load(youtube_url=youtube_url)
         return loader.load()
+    
