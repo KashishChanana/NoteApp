@@ -9,3 +9,4 @@ pandas==2.2.1
 python-dotenv==1.0.1
 youtube-transcript-api==0.6.2
 pypdf==4.2.0
+unstructured==0.14.5

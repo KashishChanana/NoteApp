@@ -1,11 +1,13 @@
 
 from dataloaders.pdf_loader import PDFLoader
 from dataloaders.transcript_loader import YouTubeLoader
+from dataloaders.web_loader import WebLoader
 
 class DataLoaderFactory:
     _loaders = {
         "YouTubeURL": YouTubeLoader,
-        "FileUpload": PDFLoader
+        "FileUpload": PDFLoader,
+        "WebURL": WebLoader
     }
 
     @staticmethod
