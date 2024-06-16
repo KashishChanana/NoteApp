@@ -1,9 +1,9 @@
 import streamlit as st
 from main import Workflow
 
+workflow = Workflow()
 
 def main():
-    st.title("TLDR")
     web_sidebar, youtube_sidebar, file_sidebar = st.sidebar.tabs(["Web", "YouTube", "File Upload"])
 
     with web_sidebar:
@@ -37,10 +37,23 @@ def main():
             st.video(youtube_url)
             st.divider()
 
-        response = Workflow().run(input_io, model, task, upload_type)
+        splits, response = workflow.run(input_io, model, task, upload_type)
         if response:
             st.subheader(task)
             st.markdown(response)
+
+        if 'save_clicked' not in st.session_state:
+            st.session_state.save_clicked = False
+        
+
+        def on_save_button_click():
+            workflow.save(splits)
+            st.session_state.save_clicked = True
+            st.markdown(response)
+            st.button('Saved', disabled=True)
+        
+        # Define save button with callback
+        save_button = st.button('Save', type="primary", on_click=on_save_button_click)
 
 if __name__ == "__main__":
     main()

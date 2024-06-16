@@ -14,12 +14,12 @@ class BlogTask(BaseTask):
         return SummaryTask()
 
     def execute(self, model:BaseClient, context:str):
-        summary = self.get_dependent_task().execute(model=model, context=context)
+        _, summary = self.get_dependent_task().execute(model=model, context=context)
         doc =  Document(page_content=summary, metadata={"source": "local"})
         summary_splits = recursive_char_splitter.split_text([doc], chunk_overlap=0)
         for split in summary_splits:
             response = model.generate(self.blog_prompt, split.page_content)
             self.blog += response.choices[0].message.content
 
-        return self.blog
+        return summary_splits, self.blog
     

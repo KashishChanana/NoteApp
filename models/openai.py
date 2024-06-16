@@ -27,7 +27,11 @@ class OpenAI(BaseClient):
             ]
         )
         return response
-
+    
+    def get_embeddings(self, text:str, model="text-embedding-3-small"):
+        text = text.replace("\n", " ")
+        return self.client.embeddings.create(input = [text], model=model).data[0].embedding
+    
     def get_model(self):
         current_date = datetime.datetime.now().date()
         # Define the date after which the model should be set to "gpt-3.5-turbo"

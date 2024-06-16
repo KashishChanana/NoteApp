@@ -1,5 +1,6 @@
 from tasks.blog_task import BlogTask
 from tasks.key_concepts_task import KeyConceptsTask
+from tasks.qa_task import QATask
 from tasks.summary_task import SummaryTask
 
 class TaskFactory:
@@ -7,6 +8,7 @@ class TaskFactory:
         "Key Concepts": KeyConceptsTask,
         "Summary": SummaryTask,
         "Blog": BlogTask,
+        "QA": QATask
     }
 
     @staticmethod

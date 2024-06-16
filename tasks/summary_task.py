@@ -24,7 +24,7 @@ class SummaryTask(BaseTask):
             for text in splits:
                 generated_response = model.generate(self.summary_prompt, text.page_content)
                 self.summary += generated_response.choices[0].message.content
-            return self.summary
+            return splits, self.summary
         except Exception as e:
             raise RuntimeError(f"Error executing summary task: {e}")
         

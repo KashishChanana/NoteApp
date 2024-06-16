@@ -10,7 +10,6 @@ class PDFLoader(BaseLoader):
                 content = ""
                 for page in pdf_reader.pages:
                     content += page.extract_text()
-                
                 documents = [Document(page_content=content, metadata={"source": "local"})]
             except Exception as e:
                 raise RuntimeError(f"Unable to read PDF. {e}")
