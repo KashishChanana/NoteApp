@@ -4,6 +4,12 @@ from main import Workflow
 workflow = Workflow()
 
 def main():
+    st.set_page_config(
+        page_title="TLDR",
+        page_icon='💬',
+        layout='wide'
+    )
+    
     web_sidebar, youtube_sidebar, file_sidebar = st.sidebar.tabs(["Web", "YouTube", "File Upload"])
 
     with web_sidebar:
@@ -44,7 +50,6 @@ def main():
 
         if 'save_clicked' not in st.session_state:
             st.session_state.save_clicked = False
-        
 
         def on_save_button_click():
             workflow.save(splits)
