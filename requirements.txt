@@ -12,3 +12,4 @@ pypdf==4.2.0
 unstructured==0.14.5
 pinecone
 tiktoken
+langchain_pinecone
