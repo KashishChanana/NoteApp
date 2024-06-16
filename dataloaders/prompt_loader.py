@@ -12,7 +12,7 @@ def _load_prompt(task_name:str):
              "KeyConceptsTask": "prompts/keywords.txt",
              "BlogTask": "prompts/blogformatter.txt",
              "SummaryTask": "prompts/summary.txt",
-             "QATask":"prompts/qatask.txt"
+             "QATask":"prompts/qa.txt"
         }
         try:
             print(task_name)

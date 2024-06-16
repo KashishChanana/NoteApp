@@ -38,14 +38,22 @@ class PineconeDB():
             time.sleep(1)
             # view index stats
             self.index.describe_index_stats()
+            print("DB Instantiated.")
+
         except Exception as e:
             print(e)
 
     
-    def upsert(self, documents):
+    def upsert(self, documents:list):
         self.vector_store = PineconeVectorStore.from_documents(documents=documents, embedding=self.embeddings, index_name=self.index_name)
         print("Added to Vector Store.")
 
 
-    def retrieve(self):
-        pass
+    def retrieve(self, question:str):
+        self.vector_store = PineconeVectorStore(index_name=self.index_name, embedding=self.embeddings, pinecone_api_key=os.environ['PINECONE_API_KEY'])
+        found_docs = self.vector_store.similarity_search(query=question)
+        retrieved_content = ""
+        for doc in found_docs:
+            retrieved_content += doc.page_content
+        return retrieved_content
+        

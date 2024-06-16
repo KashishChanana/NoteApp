@@ -19,3 +19,10 @@ class Workflow():
     def save(self, documents:str):
         self.vector_db.upsert(documents=documents)
     
+    def retrieve(self, question:str, model="GPT-3.5", task="QATask"):
+        task = TaskFactory.get_task(task_name=task)
+        model = ModelFactory.get_model(model_name=model)
+        return task.execute(model, question)
+
+
+    

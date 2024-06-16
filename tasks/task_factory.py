@@ -8,7 +8,7 @@ class TaskFactory:
         "Key Concepts": KeyConceptsTask,
         "Summary": SummaryTask,
         "Blog": BlogTask,
-        "QA": QATask
+        "QATask": QATask
     }
 
     @staticmethod

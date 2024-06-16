@@ -1,5 +1,6 @@
 import streamlit as st
 from main import Workflow
+import time
 
 workflow = Workflow()
 
@@ -59,6 +60,18 @@ def main():
         
         # Define save button with callback
         save_button = st.button('Save', type="primary", on_click=on_save_button_click)
+
+    with st.form('my_form'):
+        query = st.text_area('', 'So, what is it you\'d like to recall?')
+        submitted = st.form_submit_button('Submit', type="primary")
+    if submitted:
+        _, answer = workflow.retrieve(query)
+        def stream_data():
+            for word in answer.split(" "):
+                yield word + " "
+                time.sleep(0.02)
+        if answer:
+            st.write_stream(stream_data)
 
 if __name__ == "__main__":
     main()
