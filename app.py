@@ -62,8 +62,11 @@ def main():
         save_button = st.button('Save', type="primary", on_click=on_save_button_click)
 
     with st.form('my_form'):
+        
         query = st.text_area('', 'So, what is it you\'d like to recall?')
-        submitted = st.form_submit_button('Submit', type='primary')
+        col1, col2 = st.columns([10, 1])
+        with col2:
+            submitted = st.form_submit_button('Submit', type='primary')
     if submitted:
         _, answer = workflow.retrieve(query)
         def stream_data():
