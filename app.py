@@ -24,7 +24,7 @@ def main():
 
     model = st.sidebar.selectbox("Generative Model", ["GPT-3.5"])
     task = st.sidebar.selectbox("Generative Task", ["Blog", "Summary"])
-    generate_button = st.sidebar.button("Generate", type="secondary")
+    generate_button = st.sidebar.button("Generate", type="primary")
 
     if web_url:
         upload_type = "WebURL"
@@ -63,7 +63,7 @@ def main():
 
     with st.form('my_form'):
         query = st.text_area('', 'So, what is it you\'d like to recall?')
-        submitted = st.form_submit_button('Submit', type="primary")
+        submitted = st.form_submit_button('Submit', type='primary')
     if submitted:
         _, answer = workflow.retrieve(query)
         def stream_data():

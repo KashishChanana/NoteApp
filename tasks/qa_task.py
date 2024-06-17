@@ -9,7 +9,7 @@ class QATask(BaseTask):
         self.db = PineconeDB()
 
     def expand_prompt(self, retrieved_content, question:str):
-        self.qa_prompt = f"{self.qa_prompt} {retrieved_content} \n Question: {question}"
+        self.qa_prompt = f"{self.qa_prompt} {retrieved_content} \n Question: {question} Tell in great detail"
     
     def execute(self, model:BaseClient, question:str):
         retrieved_content = self.db.retrieve(question=question)
